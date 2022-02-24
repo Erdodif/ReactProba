@@ -1,25 +1,23 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Folders from './Folders'
 
 function App() {
+  getFolders();
+  let folders = new Folders();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Helló</p>
+      {folders}
+      <img src={logo} className="Logo" alt="React JS."/>
     </div>
   );
+}
+
+async function getFolders(){
+  let text = await fetch('localhost').text;
+  console.log(text);
+  return text;
 }
 
 export default App;
