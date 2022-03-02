@@ -1,0 +1,57 @@
+$bg-folder : rgb(46, 75, 139);
+$bg-file : rgb(255, 216, 133);
+$text-folder: white;
+$text-file : rgb(39, 21, 21);
+
+@mixin buttonAnim($bg, $text){
+    p {
+        margin-block:0;
+        padding-inline:.5em;
+        padding-block:.2em;
+        color: $text;
+    }
+    &:hover{
+        background: $text;
+        p{
+            color: $bg;
+            transition: color 150ms ease-in;
+            transition-delay: 150ms;
+        }
+        transition: background translateY 150ms ease-in;
+        transition-delay: 150ms;
+    }
+    &:active{
+        background: $text;
+        transform: translateY(.1em);
+        transition: background 0ms;
+    }
+}
+
+.Tree{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    .Folders{
+        user-select: none;
+        background: $bg-folder;
+        padding: 1em;
+    }
+    .Folder{
+        margin:0;
+        border-radius: .5em;
+        @include buttonAnim($bg-folder,$text-folder );
+    }
+    .Files{
+        user-select: none;
+        background: $bg-file;
+        padding: 1em;
+    }
+    .File{
+        margin:0;
+        border-radius: .5em;
+        @include buttonAnim($bg-file,$text-file );
+    }
+    .navigate{
+        width: min-content;
+        @include buttonAnim(white,black);
+    }
+}
